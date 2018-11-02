@@ -1,0 +1,11 @@
+<div class="movies">
+  <div class="movies__list">
+    <div *ngIf="!((movies$ | async)?.length)">
+      No movies loaded.
+    </div>
+    <app-movie-item
+      *ngFor="let movie of (movies$ | async)"
+      [movie]="movie">
+    </app-movie-item>
+  </div>
+</div>
