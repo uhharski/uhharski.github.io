@@ -8,6 +8,8 @@ import * as routerReducers from './router.reducers';
 export interface MovieState extends EntityState<Movie> {
   selectedMovieKey: string | null;
   moviesLoaded: boolean;
+  term: string;
+  enqueuedNames: string[];
  }
 
 const movieAdapter = createEntityAdapter<Movie>({
@@ -16,8 +18,9 @@ const movieAdapter = createEntityAdapter<Movie>({
 
 const movieInitialState: MovieState = movieAdapter.getInitialState({
   selectedMovieKey: null,
-  moviesLoaded: false
-
+  moviesLoaded: false,
+  term: '',
+  enqueuedNames: []
 });
 
 export function movieReducer(
@@ -27,9 +30,10 @@ export function movieReducer(
   switch (action.type) {
     case movieActions.MovieActions.GET_MOVIES_SUCCESS:
       return movieAdapter.addAll(action.payload, {...state, moviesLoaded: true});
-    case movieActions.MovieActions.SELECT_MOVIE:
-      state.selectedMovieKey = action.payload;
-      return state;
+    case movieActions.MovieActions.SEARCH_MOVIES:
+      return {...state, term: action.payload};
+    case movieActions.MovieActions.SEARCH_MOVIES_SUCCESS:
+      return {...state, enqueuedNames: action.payload};
     default:
       return state;
   }
@@ -37,21 +41,24 @@ export function movieReducer(
 
 export const selectMovieState = createFeatureSelector<MovieState>('movies');
 
-export const { selectAll: selectAllMovies, selectIds } = movieAdapter.getSelectors(
+export const { selectAll: selectAllMovies, selectIds, selectTotal } = movieAdapter.getSelectors(
   selectMovieState
 );
 
 export const getLoadedState = createSelector(
   selectMovieState,
   state => state.moviesLoaded
-)
+);
+
+export const getEnqueuedNames = createSelector(
+  selectMovieState,
+  state => state.enqueuedNames
+);
 
 export const getSelectedMovie = createSelector(
     selectMovieState,
     routerReducers.getRouterState,
     (state, router) => {
-      console.log(router);
       return router.state && state.entities[router.state.params.key];
     }
 );
-

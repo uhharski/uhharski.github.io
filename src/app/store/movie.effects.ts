@@ -9,7 +9,6 @@ import { MessageService } from '../services/message.service';
 
 @Injectable()
 export class MovieEffects {
-
   @Effect()
   getMovies$ = this.update$.pipe(
     ofAction(movieActions.GetMovies),
@@ -17,6 +16,17 @@ export class MovieEffects {
     map(response => {
       this.messageService.add('Populating list with movies.');
       return new movieActions.GetMoviesSuccess(response);
+    }));
+
+  @Effect()
+  getEnqueuedNames$ = this.update$.pipe(
+    ofAction(movieActions.SearchMovies),
+    map(action => action.payload),
+    switchMap(term => this.movieService.searchMovies(term)),
+    map(response => {
+      this.messageService.add('Populating list with movie names.');
+      const movieNames: string[] = response.map(movie => movie.name)
+      return new movieActions.SearchMoviesSuccess(movieNames);
     }));
 
   constructor (
