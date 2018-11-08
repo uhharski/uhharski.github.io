@@ -12,7 +12,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatInputModule,
   MatAutocompleteModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatIconModule,
+  MatButtonModule,
+  MatCheckboxModule
 } from '@angular/material';
 
 import {
@@ -20,16 +23,19 @@ import {
   RouterStateSerializer,
 } from '@ngrx/router-store';
 
-import { reducers, CustomSerializer } from './store/router.reducers';
-import { RouterEffects } from './store/router.effects';
+import { routeReducers, CustomSerializer } from './store/reducers/router.reducer';
+import { RouterEffects } from './store/effects/router.effects';
 
-import { AppComponent } from './app.component';
 import { AppRoutingModule } from './router/router';
-import { movieReducer } from './store/movie.reducer';
-import { MovieEffects } from './store/movie.effects';
+import { reducers } from './store/reducers';
+import { MovieEffects } from './store/effects/movie.effects';
+import { GenreEffects } from './store/effects/genre.effects';
 import { InMemoryDataService } from './services/in-memory-data.service';
 import { MovieService } from './services/movie.service';
 import { MessageService } from './services/message.service';
+import { GenreService } from './services/genre.service';
+
+import { AppComponent } from './app.component';
 import { MoviesComponent } from './containers/movies/movies.component';
 import { MovieItemComponent } from './components/movie-item/movie-item.component';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
@@ -42,19 +48,22 @@ import { MoviePageComponent } from './containers/movie-page/movie-page.component
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot(reducers),
-    StoreModule.forFeature('movies', movieReducer),
+    StoreModule.forRoot(routeReducers),
+    StoreModule.forFeature('cinema', reducers),
     EffectsModule.forRoot([RouterEffects]),
-    EffectsModule.forFeature([MovieEffects]),
+    EffectsModule.forFeature([MovieEffects, GenreEffects]),
     InMemoryWebApiModule.forRoot(InMemoryDataService),
     StoreRouterConnectingModule,
     MatAutocompleteModule,
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCheckboxModule
   ],
-  providers: [ MovieService, MessageService, { provide: RouterStateSerializer, useClass: CustomSerializer } ],
+  providers: [ GenreService, MovieService, MessageService, { provide: RouterStateSerializer, useClass: CustomSerializer } ],
   declarations: [
     AppComponent,
     MoviesComponent,

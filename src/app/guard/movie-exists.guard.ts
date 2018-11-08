@@ -6,8 +6,8 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { tap, map, filter, take, switchMap } from 'rxjs/operators';
 
-import * as fromReducers from '../store/movie.reducer';
-import * as fromActions from '../store/movie.actions';
+import * as fromSelectors from '../store/selectors';
+import * as fromActions from '../store/actions/movie.actions';
 
 import {Movie} from '../model/movie.model';
 
@@ -26,7 +26,7 @@ export class MovieExistsGuards implements CanActivate {
 
   hasMovie(): Observable<boolean> {
     return this.store
-      .select(fromReducers.getSelectedMovie)
+      .select(fromSelectors.getSelectedMovie)
       .pipe(
         map(loaded => !!loaded),
         take(1)
@@ -34,7 +34,7 @@ export class MovieExistsGuards implements CanActivate {
   }
 
   checkMovies(): Observable<boolean> {
-    return this.store.select(fromReducers.getLoadedState).pipe(
+    return this.store.select(fromSelectors.getLoadedMoviesState).pipe(
       tap(loaded => {
         if (!loaded) {
           this.store.dispatch(new fromActions.GetMovies);
