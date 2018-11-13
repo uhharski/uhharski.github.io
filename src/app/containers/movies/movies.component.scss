@@ -1,8 +1,30 @@
+@import '~@angular/material/theming';
+@import '../../../betson-theme.scss';
+
 .movies{
   display: flex;
+  &__list{
+    width: 100%;
+  }
 
   &__genre-list{
     display: flex;
     flex-flow: column;
+  }
+
+  &__empty{
+    width: 100%;
+    color: mat-color($mat-warn, 500);
+    font-size: 22px;
+    animation: fade 3s;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

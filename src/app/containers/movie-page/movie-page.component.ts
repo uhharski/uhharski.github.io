@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Movie } from '../../model/movie.model';
 import { Store } from '@ngrx/store';
@@ -7,7 +7,8 @@ import * as fromSelectors from '../../store/selectors';
 @Component({
   selector: 'app-movie-page',
   templateUrl: './movie-page.component.html',
-  styleUrls: ['./movie-page.component.css']
+  styleUrls: ['./movie-page.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MoviePageComponent implements OnInit {
   movie$: Observable<Movie>;

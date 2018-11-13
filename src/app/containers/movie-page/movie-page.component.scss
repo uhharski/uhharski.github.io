@@ -1,0 +1,18 @@
+.movie-page{
+  &__toolbar{
+     position: absolute;
+     top: 0;
+     bottom: 0;
+     left: 0;
+     right: 0;
+
+    & .mat-button-wrapper{
+      display: flex;
+      align-items: center;
+      margin-left: 6px;
+      &>*:first-child{
+        padding-right: 10px;
+      }
+    }
+   }
+}

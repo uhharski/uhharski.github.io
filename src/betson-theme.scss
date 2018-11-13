@@ -1,0 +1,123 @@
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+$mat-primary: (
+  50: #e5e5e5,
+  100: #bebebf,
+  200: #939394,
+  300: #676869,
+  400: #474749,
+  500: #262729,
+  600: #222324,
+  700: #1c1d1f,
+  800: #171719,
+  900: #0d0e0f,
+  A100: #6767ee,
+  A200: #3a3ae9,
+  A400: #0000ef,
+  A700: #0000d5,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: $white-87-opacity,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+$mat-accent: (
+  50: #e0f7f7,
+  100: #b3eaec,
+  200: #80dcdf,
+  300: #4dced2,
+  400: #26c4c8,
+  500: #00b9be,
+  600: #00b2b8,
+  700: #00aaaf,
+  800: #00a2a7,
+  900: #009399,
+  A100: #c4fcff,
+  A200: #91faff,
+  A400: #5ef7ff,
+  A700: #45f6ff,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: $white-87-opacity,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+$mat-warn: (
+  50: #fff4e4,
+  100: #fee3bc,
+  200: #fdd18f,
+  300: #fcbe62,
+  400: #fcb040,
+  500: #fba21e,
+  600: #fa9a1a,
+  700: #fa9016,
+  800: #f98612,
+  900: #f8750a,
+  A100: #ffffff,
+  A200: #fff5ee,
+  A400: #ffd7bb,
+  A700: #ffc7a1,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: $white-87-opacity,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+$betson-app-primary: mat-palette($mat-primary);
+$betson-app-accent:  mat-palette($mat-accent, 500, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$betson-app-warn:    mat-palette($mat-warn);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$betson-app-theme: mat-light-theme($betson-app-primary, $betson-app-accent, $betson-app-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($betson-app-theme);

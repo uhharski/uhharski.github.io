@@ -1,8 +1,12 @@
+@import '~@angular/material/theming';
+@import '../betson-theme.scss';
+
 :host {
   display: block;
   width: 100%;
 }
 .app {
+  height: 100%;
   &__header {
     position: relative;
     text-align: center;
@@ -11,35 +15,26 @@
   &__logo {
     width: 75px;
   }
-  &__nav {
-    border-radius: 4px 4px 0 0;
-    text-align: center;
-    background: #ab131b;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    a {
-      color: #fff;
-      padding: 15px 35px;
-      font-family: 'cornerstone';
-      &.active {
-        background: #921217;
-      }
-    }
-  }
   &__content {
-    margin: 0 auto 50px;
-    background: #fff;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    max-width: 1000px;
-    border-radius: 4px;
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 64px auto 0;
+    height: calc(100% - 100px);
+    box-sizing: border-box;
+    overflow: hidden auto;
   }
   &__container {
-    padding: 35px;
+    width: 100%;
+    margin: auto;
+    max-width: 1000px;
+    box-sizing: border-box;
+    flex: 2;
+    padding: 0 35px;
+    background: rgba(255, 255, 255, .2);
   }
   &__footer {
-    border-radius: 0 0 4px 4px;
-    background: #0f9675;
+    height: 20px;
+    background: mat-color($mat-primary, 500);
     color: #fff;
     padding: 10px;
     text-align: center;

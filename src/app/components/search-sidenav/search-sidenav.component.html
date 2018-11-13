@@ -1,0 +1,40 @@
+<header class="navbar">
+  <mat-toolbar color="primary" class="navbar__toolbar">
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>{{(snav.opened)?"close":"search"}}</mat-icon></button>
+    <h1>Betson Test</h1>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="navbar__container" style.marginTop.px="56">
+    <mat-sidenav #snav fixedTopGap="56" mode="over">
+      <form class="navbar__form">
+        <mat-form-field appearance="standard">
+          <input
+            type="text"
+            placeholder="Search for movie"
+            aria-label="Search for movie"
+            matInput
+            minlength="1"
+            maxlength="20"
+            [formControl]="input"
+            autocomplete="off"
+          >
+          <button matSuffix mat-icon-button color="secondary" *ngIf="!!input.value.length" (click)="clear()">
+            <mat-icon aria-label="search movies">close</mat-icon>
+          </button>
+        </mat-form-field>
+        <button mat-icon-button color="secondary" type="submit" [disabled]="!input.dirty" (click)="submit($event)">
+          <mat-icon aria-label="search movies">search</mat-icon>
+        </button>
+      </form>
+      <mat-nav-list>
+        <mat-checkbox
+          *ngFor="let item of genres$ | async"
+          name="{{ item.name }}"
+          [checked]="item.checked"
+          (change)="updateGenres($event)">
+          {{ item.name }}
+        </mat-checkbox>
+      </mat-nav-list>
+    </mat-sidenav>
+  </mat-sidenav-container>
+</header>

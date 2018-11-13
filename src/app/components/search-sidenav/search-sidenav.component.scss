@@ -1,0 +1,43 @@
+.navbar {
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: #a8a8a8;
+  z-index: 99;
+
+  &__toolbar{
+    pointer-events: all;
+    z-index: 99;
+  }
+
+  &__form{
+    width: 100%;
+    & .mat-form-field-suffix{
+      position: absolute;
+      top: 18px;
+      right: 0;
+    }
+  }
+
+  &__container{
+    flex: 1;
+    visibility: hidden;
+    pointer-events: none;
+    &.mat-drawer-opened {
+      pointer-events: all;
+    }
+    & .mat-sidenav{
+      padding: 10px 16px 0 26px;
+    }
+  }
+
+  & .mat-nav-list{
+    display: flex;
+    flex-flow: column;
+  }
+}

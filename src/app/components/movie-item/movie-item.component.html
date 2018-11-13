@@ -1,9 +1,17 @@
-<div class="movie-item">
-  <a [routerLink]="['/movies', movie.key]">
-    <div class="image"></div>
-    <h4>{{ movie.name }}</h4>
-    <button type="button" class="btn btn__ok">
-      Details
-    </button>
-  </a>
-</div>
+<a class="movie-item" [routerLink]="['/movies', movie.key]">
+  <div class="movie-item__box">
+    <div class="movie-item__container">
+      <div class="movie-item__col">
+        <div class="movie-item__name">{{ movie.name }}</div>
+        <mat-chip-list>
+          <mat-chip class="movie-item__genre" color="accent" selected *ngFor="let genre of movie.genres">{{genre}}</mat-chip>
+        </mat-chip-list>
+      </div>
+      <div class="movie-item__col">
+        <div>Duration:</div>
+        <div>{{movie.length}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="movie-item__rate">{{movie.rate}}</div>
+</a>

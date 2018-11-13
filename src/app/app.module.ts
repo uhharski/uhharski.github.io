@@ -15,7 +15,12 @@ import {
   MatFormFieldModule,
   MatIconModule,
   MatButtonModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatListModule,
+  MatChipsModule,
+  MatCardModule
 } from '@angular/material';
 
 import {
@@ -40,6 +45,8 @@ import { MoviesComponent } from './containers/movies/movies.component';
 import { MovieItemComponent } from './components/movie-item/movie-item.component';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 import { MoviePageComponent } from './containers/movie-page/movie-page.component';
+import { SearchSidenavComponent } from './components/search-sidenav/search-sidenav.component';
+import { PosterComponent } from './components/poster/poster.component';
 
 
 @NgModule({
@@ -61,7 +68,12 @@ import { MoviePageComponent } from './containers/movie-page/movie-page.component
     MatFormFieldModule,
     MatIconModule,
     MatButtonModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatChipsModule,
+    MatCardModule
   ],
   providers: [ GenreService, MovieService, MessageService, { provide: RouterStateSerializer, useClass: CustomSerializer } ],
   declarations: [
@@ -69,7 +81,9 @@ import { MoviePageComponent } from './containers/movie-page/movie-page.component
     MoviesComponent,
     MovieItemComponent,
     MovieDetailsComponent,
-    MoviePageComponent
+    MoviePageComponent,
+    SearchSidenavComponent,
+    PosterComponent
   ],
   bootstrap:    [ AppComponent ]
 })

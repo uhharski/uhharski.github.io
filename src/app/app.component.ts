@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as movieActions from './store/actions/movie.actions';
-import * as genreActions from './store/actions/genre.actions'
+import * as genreActions from './store/actions/genre.actions';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +9,6 @@ import * as genreActions from './store/actions/genre.actions'
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-  title = 'Movies';
-
   constructor(private store: Store<any>) {}
 
   ngOnInit() {

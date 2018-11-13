@@ -9,8 +9,13 @@ export const getMovieState = createSelector(
   (state: fromCinema.CinemaState) => state.movies
 );
 
-export const { selectAll: selectAllMovies, selectIds: selectMoviesKeys, selectEntities: selectMovieEntities } = movieAdapter.getSelectors(
-  getMovieState
+export const {
+  selectAll: selectAllMovies,
+  selectIds: selectMoviesKeys,
+  selectEntities: selectMoviesEntities,
+  selectTotal: selectMoviesTotal
+} = movieAdapter.getSelectors(
+    getMovieState
 );
 
 export const getLoadedMoviesState = createSelector(
@@ -20,7 +25,7 @@ export const getLoadedMoviesState = createSelector(
 
 export const selectMovieKeysByGenre = createSelector(
   selectMoviesKeys,
-  selectMovieEntities,
+  selectMoviesEntities,
   genreSelectors.getGenreState,
   (keys: string[], entities, genreState: any ) => {
     return keys
@@ -34,13 +39,13 @@ export const selectMovieKeysByGenre = createSelector(
 
 export const selectMoviesByGenre = createSelector(
   selectMovieKeysByGenre,
-  selectMovieEntities,
+  selectMoviesEntities,
   (ids, entities) => ids.map(id => entities[id])
 );
 
 export const selectMovieKeysByTerm = createSelector(
   selectMovieKeysByGenre,
-  selectMovieEntities,
+  selectMoviesEntities,
   getMovieState,
   (keys: string[], entities, movieState: MovieState ) => {
     return keys
@@ -50,7 +55,7 @@ export const selectMovieKeysByTerm = createSelector(
 
 export const selectMoviesByTerm = createSelector(
   selectMovieKeysByTerm,
-  selectMovieEntities,
+  selectMoviesEntities,
   (ids, entities) => ids.map(id => entities[id])
 );
 

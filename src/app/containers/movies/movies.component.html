@@ -1,41 +1,13 @@
+<app-search-sidenav></app-search-sidenav>
 <div class="movies">
-  <section>
-    <form class="example-form">
-      <mat-form-field appearance="standard">
-        <input
-          type="text"
-          placeholder="Search for movie"
-          aria-label="Search for movie"
-          matInput
-          maxlength="1"
-          maxlength="20"
-          [formControl]="input"
-        >
-        <button matSuffix mat-icon-button color="secondary" *ngIf="input.dirty" (click)="clear()">
-          <mat-icon aria-label="search movies">close</mat-icon>
-        </button>
-      </mat-form-field>
-      <button mat-icon-button color="secondary" type="submit" [disabled]="!input.dirty" (click)="submit($event)">
-        <mat-icon aria-label="search movies">search</mat-icon>
-      </button>
-    </form>
-
-    <div class="movies__genre-list">
-      <mat-checkbox
-        *ngFor="let item of genres$ | async"
-        name="{{ item }}"
-        (change)="updateGenres($event)">
-        {{ item }}
-      </mat-checkbox>
-    </div>
-  </section>
-  <div class="movies__list">
-    <div *ngIf="!((movies$ | async)?.length)">
-      No movies loaded.
-    </div>
-    <app-movie-item class="group"
-      *ngFor="let movie of (movies$ | async)"
+  <p class="movies__empty" *ngIf="!(movies$ | async).length">
+    No movies found.
+  </p>
+  <div class="movies__list" [@preview]>
+    <app-movie-item
+      *ngFor="let movie of movies$ | async"
       [movie]="movie">
     </app-movie-item>
   </div>
 </div>
+

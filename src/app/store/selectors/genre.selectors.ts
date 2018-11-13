@@ -7,7 +7,7 @@ export const getGenreState = createSelector(
   (state: fromCinema.CinemaState) => state.genres
 );
 
-export const { selectAll: selectAllGenres, selectIds: selectGenreIds } = genreAdapter.getSelectors(
+export const { selectAll, selectIds: selectGenreIds } = genreAdapter.getSelectors(
   getGenreState
 );
 
@@ -19,4 +19,12 @@ export const getLoadedGenreState = createSelector(
 export const getSelectedGenres = createSelector(
   getGenreState,
   state => state.selectedGenres
+);
+
+export const selectAllGenres = createSelector(
+  selectAll,
+  getSelectedGenres,
+  (genres, selectedGenre) => genres.map( (genre) => {
+    return {name: genre, checked: selectedGenre.includes(genre)};
+  })
 );

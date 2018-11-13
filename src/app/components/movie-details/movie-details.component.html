@@ -1,1 +1,14 @@
-<div *ngIf="movie">{{movie.name}}</div>
+<mat-card class="movie-details">
+  <mat-card-header>
+    <mat-card-title>{{movie.name}}</mat-card-title>
+    <mat-card-subtitle>Duration: {{movie.length}}</mat-card-subtitle>
+  </mat-card-header>
+  <div>
+    <img mat-card-image src="assets/images/movie-covers/{{movie.img}}" alt="{{movie.name}}">
+    <mat-card-content>
+      <p>
+        {{movie.description}}
+      </p>
+    </mat-card-content>
+  </div>
+</mat-card>

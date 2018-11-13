@@ -1,0 +1,91 @@
+@import '~@angular/material/theming';
+@import '../../../betson-theme.scss';
+
+:host {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+
+.movie-item {
+  text-decoration: none;
+
+  &__box{
+    overflow: hidden;
+    position: relative;
+    margin: 1.5em 0;
+    padding: 15px;
+    min-height: 1em;
+    border-radius: 30px 15px;
+    color: #fff;
+    z-index: 1;
+
+    &:before {
+      position: absolute;
+      z-index: -1;
+      top: 10px;
+      right: 10px;
+      margin: -35px;
+      padding: 35px;
+      border-radius: 50%;
+      box-shadow: 0 0 0 85em rgba(mat-color($mat-accent, 500), .8);
+      content: ''
+    }
+
+    &:after{
+      position: absolute;
+      z-index: -1;
+      top: 5px; right: 5px;
+      margin: -20px;
+      padding: 20px;
+      border-radius: 50%;
+      border: 5px solid mat-color($mat-warn, 500);
+      content: ''
+    }
+  }
+
+  &__container{
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    width: calc(100% - 35px);
+  }
+
+  &__col{
+    flex: 1;
+    display: flex;
+    padding-left: 16px;
+    flex-flow: column nowrap;
+    &:first-child{
+      flex: 1 0 70%;
+    }
+  }
+
+  &__name{
+    margin-bottom: 12px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  &__rate{
+    position: absolute;
+    top: -13px; right: -20px;
+    padding: 8px;
+    font-size: 22px;
+    font-weight: bold;
+    color: mat-color($mat-warn, 500);
+  }
+
+  &__genre{
+    padding: 4px 8px!important;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .movie-item {
+    &__genre {
+      margin: 1px!important;
+    }
+  }
+}
