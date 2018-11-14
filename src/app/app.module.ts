@@ -20,7 +20,8 @@ import {
   MatSidenavModule,
   MatListModule,
   MatChipsModule,
-  MatCardModule
+  MatCardModule,
+  MatDividerModule
 } from '@angular/material';
 
 import {
@@ -46,7 +47,9 @@ import { MovieItemComponent } from './components/movie-item/movie-item.component
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 import { MoviePageComponent } from './containers/movie-page/movie-page.component';
 import { SearchSidenavComponent } from './components/search-sidenav/search-sidenav.component';
+import { BackgroundComponent } from './components/bg/bg.component';
 import { PosterComponent } from './components/poster/poster.component';
+import { RaitingComponent } from './components/raiting/raiting.component';
 
 
 @NgModule({
@@ -73,7 +76,8 @@ import { PosterComponent } from './components/poster/poster.component';
     MatSidenavModule,
     MatListModule,
     MatChipsModule,
-    MatCardModule
+    MatCardModule,
+    MatDividerModule
   ],
   providers: [ GenreService, MovieService, MessageService, { provide: RouterStateSerializer, useClass: CustomSerializer } ],
   declarations: [
@@ -83,7 +87,9 @@ import { PosterComponent } from './components/poster/poster.component';
     MovieDetailsComponent,
     MoviePageComponent,
     SearchSidenavComponent,
-    PosterComponent
+    BackgroundComponent,
+    PosterComponent,
+    RaitingComponent
   ],
   bootstrap:    [ AppComponent ]
 })

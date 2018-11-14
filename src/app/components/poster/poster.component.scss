@@ -1,90 +1,20 @@
 @import '~@angular/material/theming';
-@import '../../../betson-theme';
+@import '../../../betson-theme.scss';
 
-$animationSpeed: 2s;
-
-:host {
-  display: block;
-  width: 100%;
+.poster{
+  & .path {
+    stroke: mat-color($mat-accent, 500);
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: dash 3s linear forwards;
+  }
 }
 
-.c-poster {
-    &__bg{
-      position: absolute;
-      pointer-events: none;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 100%;
-      width: 100%;
-      fill: transparent;
-      z-index: -1;
-
-      .bg{
-          stroke: mat-color($mat-primary, 500, .2);
-      }
-    }
-
-    .blink{                
-        .bg {fill: url(#gr-1);}
-
-        .stop-color {
-            stop-color: transparent;
-            animation: colors $animationSpeed linear 1;
-            &--1 {                      
-                animation-delay: calc(#{$animationSpeed} - #{$animationSpeed}*.1);
-            }
-            &--2 {                
-                animation-delay: calc(#{$animationSpeed} - #{$animationSpeed}*.2);
-            }
-            &--3 {
-                animation-delay: calc(#{$animationSpeed} - #{$animationSpeed}*.4);
-            }
-            &--4 {
-                animation-delay: calc(#{$animationSpeed} - #{$animationSpeed}*.5);
-            } 
-            &--5 {
-                animation-delay: calc(#{$animationSpeed} - #{$animationSpeed}*.6);
-            }
-            &--6 {
-                animation-delay: calc(#{$animationSpeed} - #{$animationSpeed}*.7);
-            }
-            &--7 {
-                animation-delay: calc(#{$animationSpeed} - #{$animationSpeed}*.8);
-            }
-            &--8 {
-                animation-delay: calc(#{$animationSpeed} - #{$animationSpeed}*.9);
-            }
-        }
-    }
-
-    &__contentContainer{
-        display: block;
-        width: 100%;
-        position: absolute;
-        top: 0;
-    }
-
-    &__mainPicture{
-        position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-        margin-left: 50%;
-        height: 100%;
-        z-index: 1;
-    }
-}
-
-@keyframes colors {
-    0% {
-        stop-color: transparent;
-    }  
-    50% {
-        stop-color: mat-color($mat-warn, 500, .2);
-    }       
-    100% {
-        stop-color: transparent;
-    }   
+@keyframes dash {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
 }

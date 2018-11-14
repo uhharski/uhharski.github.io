@@ -1,14 +1,23 @@
 <mat-card class="movie-details">
-  <mat-card-header>
-    <mat-card-title>{{movie.name}}</mat-card-title>
-    <mat-card-subtitle>Duration: {{movie.length}}</mat-card-subtitle>
-  </mat-card-header>
-  <div>
-    <img mat-card-image src="assets/images/movie-covers/{{movie.img}}" alt="{{movie.name}}">
+  <app-poster class="movie-details__poster" [imageUrl]="movie.img"></app-poster>
+  <div class="movie-details__content">
+    <div>
+      <h1 class="movie-details__name">{{movie.name}}</h1>
+      <h4 class="movie-details__length">Duration: {{movie.length}}</h4>
+    </div>
     <mat-card-content>
-      <p>
+      <p class="movie-details__description">
         {{movie.description}}
       </p>
     </mat-card-content>
+  </div>
+  <mat-divider inset></mat-divider>
+  <div class="movie-details__misc">
+    <mat-chip-list>
+      <mat-chip class="movie-details__genre" color="accent" selected *ngFor="let genre of movie.genres">{{genre}}</mat-chip>
+    </mat-chip-list>
+    <div class="movie-details__raiting">
+      <app-raiting [color]="'accent'" [score]="movie.rate"></app-raiting>
+    </div>
   </div>
 </mat-card>

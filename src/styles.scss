@@ -12,6 +12,7 @@ body {
   margin: 0;
   padding: 0;
   color: #333;
+  background-color: mat-color($mat-warn, 50);
   -webkit-font-smoothing: antialiased;
   display: flex;
 }

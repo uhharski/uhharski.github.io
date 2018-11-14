@@ -33,6 +33,7 @@
     background: rgba(255, 255, 255, .2);
   }
   &__footer {
+    position: relative;
     height: 20px;
     background: mat-color($mat-primary, 500);
     color: #fff;

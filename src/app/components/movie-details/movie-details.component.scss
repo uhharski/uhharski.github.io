@@ -1,0 +1,77 @@
+@import '~@angular/material/theming';
+@import '../../../betson-theme.scss';
+
+:host{
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  justify-content: center;
+}
+
+.movie-details{
+  display: flex;
+  flex-flow: row wrap;
+  padding-bottom: 0;
+  &__content{
+    display: flex;
+    flex: 2;
+    flex-flow: column nowrap;
+    padding-left: 16px;
+  }
+
+  &__poster{
+    margin-bottom: 8px;
+  }
+
+  &__name{
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 0 8px 0;
+    color: mat-color($mat-primary, 500);
+  }
+
+  &__length{
+    font-size: 14px;
+    margin-top: 0;
+    color: mat-color($mat-primary, 300);
+  }
+
+  &__description{
+    font-size: 18px;
+    color: mat-color($mat-primary, 500);
+  }
+
+  &__genre{
+    flex: 2 0 auto;
+    padding: 4px 8px!important;
+  }
+
+  &__misc{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 0;
+  }
+}
+
+
+@media only screen and (max-width: 425px) {
+  .movie-details{
+    flex-flow: column;
+    &__name{
+      margin-top: 12px;
+    }
+    &__misc{
+      align-items: baseline;
+      flex-flow: column;
+    }
+    &__raiting{
+      margin-top: 12px;
+      text-align: left;
+    }
+    & app-poster{
+      margin: auto;
+    }
+  }
+}

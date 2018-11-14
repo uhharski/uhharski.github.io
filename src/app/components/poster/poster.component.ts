@@ -1,40 +1,27 @@
-import { Component, Input, OnInit, OnDestroy, HostBinding } from '@angular/core';
-import {trigger, state, style, transition, animate, keyframes} from '@angular/animations';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
-import { interval } from 'rxjs/observable/interval';
-import { timer } from 'rxjs/observable/timer';
-import {switchMap, map} from 'rxjs/operators';
+import {Component, Input, OnInit} from '@angular/core';
+import {animate, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-poster',
   templateUrl: './poster.component.html',
-  styleUrls: ['./poster.component.scss']
+  styleUrls: ['./poster.component.scss'],
+  animations: [
+    trigger('preview',[
+      transition(':enter', [
+        style({
+          opacity: 0
+        }),
+        animate('3s cubic-bezier(0.35, 0, 0.25, 1)')
+      ]),
+    ])
+  ]
 })
-export class PosterComponent implements OnInit, OnDestroy {
-  @Input() image: string;
-
-  blink$: Observable<any> = interval(this.rndDelay()).pipe(
-    map(iterval => Boolean(Math.round(Math.random())))
-  );
-
-  public blink: boolean;
-  private subscription: Subscription;
-
-  constructor() {}
-
+export class PosterComponent implements OnInit {
+  @Input('') imageUrl: string;
+  image: string
+  constructor() { }
   ngOnInit() {
-    this.blink = true;
-    this.blink$.subscribe(blink => {
-      this.blink = !this.blink;
-    });
+    this.image = `assets/images/movie-covers/${this.imageUrl}`;
   }
 
-  rndDelay (): number {
-    return Math.random() * 10000;
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
 }
