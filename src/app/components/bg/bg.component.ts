@@ -2,7 +2,7 @@ import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { interval } from 'rxjs/observable/interval';
-import { map } from 'rxjs/operators';
+import { map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-background',
