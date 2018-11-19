@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
 
-### [Demo](https://uhharski.github.io/demo/)&nbsp;&nbsp;&nbsp;&nbsp;
+### [Demo](https://uhharski.github.io/)&nbsp;&nbsp;&nbsp;&nbsp;
 
 ## Development server
 
